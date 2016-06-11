@@ -1,0 +1,24 @@
+# AlpineLinux with a glibc-2.23 and Oracle Java 8
+#FROM rattermeyer/alpine:latest
+FROM rattermeyer/ubuntu:xenial
+
+MAINTAINER Richard Attermeyer <richard.attermeyer@gmail.com>
+
+# Java Version and other ENV
+ENV JAVA_VERSION_MAJOR 8
+ENV JAVA_VERSION_MINOR 91
+ENV JAVA_VERSION_BUILD 14
+ENV JAVA_PACKAGE jdk
+ENV JAVA_HOME /usr/lib/jvm/jdk1.${JAVA_VERSION_MAJOR}
+ENV PATH ${PATH}:/usr/lib/jvm/jdk1.${JAVA_VERSION_MAJOR}/bin
+
+RUN mkdir /usr/lib/jvm && curl -jksSLH "Cookie: oraclelicense=accept-securebackup-cookie" -o /tmp/java.tar.gz \
+      http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-b${JAVA_VERSION_BUILD}/${JAVA_PACKAGE}-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-x64.tar.gz && \
+      gunzip /tmp/java.tar.gz && \
+      tar -C /usr/lib/jvm -xf /tmp/java.tar && \
+      ln -s /usr/lib/jvm/jdk1.${JAVA_VERSION_MAJOR}.0_${JAVA_VERSION_MINOR} /usr/lib/jvm/jdk1.${JAVA_VERSION_MAJOR}
+
+
+ENV JAVA_HOME /usr/lib/jvm/jdk1.${JAVA_VERSION_MAJOR}
+
+CMD ["bash"]
