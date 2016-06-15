@@ -4,6 +4,7 @@ MAINTAINER Richard Attermeyer <richard.attermeyer@gmail.com>
 RUN apk update && \
     apk upgrade --available && \
     apk add --no-cache bash && \
+    apk add wget && \
     sync
 
 CMD []
