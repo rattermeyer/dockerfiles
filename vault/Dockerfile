@@ -11,10 +11,10 @@ RUN  apk add --update ca-certificates \
   && rm -rf vault_${VAULT_VERSION}_linux_amd64.zip \
   && rm -rf /tmp/* /var/cache/apk/*
 
-COPY ./config /config/
+COPY ./config /config
 
 EXPOSE 8200 8125
 
 VOLUME [ "/data" ]
 
-CMD [ "vault", "server", "-config", "/config/vault.json" ]
+CMD [ "vault", "server", "-config", "/config/vault-config.json" ]
