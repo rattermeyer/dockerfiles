@@ -24,4 +24,4 @@ VOLUME [ "/data" ]
 
 ENTRYPOINT [ "/bin/consul" ]
 
-CMD [ "agent" "-config-dir", "/config"  ]
+CMD [ "agent", "-config-dir", "/config"  ]
