@@ -1,0 +1,3 @@
+#!/bin/sh
+mkdir -p /home/richard/.mozilla/pvs-firefox
+docker run -ti --rm -e DISPLAY=:0 -v /tmp/.X11-unix:/tmp/.X11-unix -v /home/richard/.mozilla/pvs-firefox:/home/firefox/.mozilla -v /home/richard/Downloads:/home/firefox/Downloads pvs-firefox
