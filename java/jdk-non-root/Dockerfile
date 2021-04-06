@@ -4,7 +4,7 @@ FROM adoptopenjdk:11-jdk-hotspot
 RUN groupadd --system --gid 1000 test && \
     useradd --system --gid test --uid 1000 --shell /bin/bash --create-home test && \ 
     apt-get update && \
-    apt-get install -y gnupg2 unzip && \
+    apt-get install -y gnupg2 unzip git && \
     rm -rf /var/lib/apt/lists/*
 
 RUN curl -fsSL https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
