@@ -1,4 +1,4 @@
-FROM adoptopenjdk:11-jdk-hotspot
+FROM eclipse-temurin:17-jdk-focal
 
 
 RUN groupadd --system --gid 1000 test && \
